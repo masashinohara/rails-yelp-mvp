@@ -2,10 +2,15 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   def index
-    @restaurants = Restaurant.all
+    if params[:name]
+      @restaurants = Restaurant.where("name LIKE '%#{params[:name]}%'")
+    else
+      @restaurants = Restaurant.all
+    end
   end
 
   def show
+    @review = Review.new
   end
 
   def new

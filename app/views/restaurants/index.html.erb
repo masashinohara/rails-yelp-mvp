@@ -1,7 +1,12 @@
 <div class="container">
-  <h1>Restaurants</h1>
+  <h1><%= link_to 'Restaurants', restaurants_path %></h1>
 
   <%= link_to 'Create new', new_restaurant_path %>
+
+  <form action="/restaurants" method="get">
+    <input type="text" name="name" placeholder="Restaurant name">
+    <input type="submit" value="Search", class="btn btn-primary">
+  </form>
 
   <ul>
     <% @restaurants.each do |restaurant| %>
